@@ -1,10 +1,22 @@
 import joblib
+import os
+
+# Get the absolute path to city_encoder.joblib (works locally and on Render)
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))  # Points to utils/
+CITY_ENCODER_PATH = os.path.join(CURRENT_DIR, "city_encoder.joblib")
 
 # Load the encoder or set to None
 try:
-    city_encoder = joblib.load('city_encoder.joblib')
+    city_encoder = joblib.load(CITY_ENCODER_PATH)  # Now uses the correct path
 except FileNotFoundError:
     city_encoder = None
+
+    
+# Load the encoder or set to None
+# try:
+#     city_encoder = joblib.load('city_encoder.joblib')
+# except FileNotFoundError:
+#     city_encoder = None
 
 # use this block to see if your city_encoder.joblib is working and succesfully encodes the cities.
 # # Print all cities with their encoded values 
